@@ -82,7 +82,7 @@ H5PEditor.CoursePresentation = function (parent, field, params, setValue) {
     }
     that.dnb.setCanPaste(canPaste);
   });
-  
+
   if (localStorage.getItem('coursePresentationFromFile') !== null) {
     setTimeout(() => {
       this.processPdf(localStorage.getItem('coursePresentationFromFile'), this);
@@ -287,7 +287,6 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
   pdfInput.change((event) => { that.processPdf(event, that) });
   var pdfLabelContainer = H5PEditor.$('<label class="h5p-slidecontrols-button-pdf">PDF</label>');
   pdfLabelContainer.append(pdfInput);
-  
   var slideControls = {
     $add: H5PEditor.$('<a href="#" aria-label="' + H5PEditor.t('H5PEditor.CoursePresentation', 'newSlide') + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-add"></a>'),
     $clone: H5PEditor.$('<a href="#" aria-label="' + H5PEditor.t('H5PEditor.CoursePresentation', 'cloneSlide') + '" class="h5p-clone-slide h5p-slidecontrols-button h5p-slidecontrols-button-clone"></a>'),
@@ -295,6 +294,8 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
     $sortLeft: H5PEditor.$('<a href="#" aria-label="' + H5PEditor.t('H5PEditor.CoursePresentation', 'sortSlide', {':dir': 'left'}) + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-sort-left"></a>'),
     $sortRight: H5PEditor.$('<a href="#" aria-label="' + H5PEditor.t('H5PEditor.CoursePresentation', 'sortSlide', {':dir': 'right'}) + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-sort-right"></a>'),
     $delete: H5PEditor.$('<a href="#" aria-label="' + H5PEditor.t('H5PEditor.CoursePresentation', 'removeSlide') + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-delete"></a>'),
+    //$pdf: H5PEditor.$('<a href="#" aria-label="add from pdf" class="h5p-slidecontrols-button">PDF</a>')
+    // $pdf: H5PEditor.$('<input id="pdfinput" type="file" accept=".pdf">')
     $pdf: pdfLabelContainer
   };
   this.slideControls = slideControls;
@@ -348,6 +349,8 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
       that.removeSlide();
       return false;
     });
+    // .next()
+    // .change((event) => { that.processPdf(event, that) });
 
   if (this.cp.activeSurface) {
     // Enable adjustments
