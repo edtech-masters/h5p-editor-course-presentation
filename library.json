@@ -1,8 +1,8 @@
 {
   "title": "Course Presentation Editor",
   "majorVersion": 1,
-  "minorVersion": 22,
-  "patchVersion": 5,
+  "minorVersion": 24,
+  "patchVersion": 1,
   "runnable": 0,
   "machineName": "H5PEditor.CoursePresentation",
   "author": "Joubel",
@@ -25,6 +25,9 @@
     },
     {
       "path": "scripts/bg-selector.js"
+    },
+    {
+      "path": "scripts/pdfjs/build/pdf.js"
     }
   ],
   "preloadedCss": [
@@ -85,17 +88,17 @@
     {
       "machineName": "H5P.Video",
       "majorVersion": 1,
-      "minorVersion": 5
+      "minorVersion": 6
     },
     {
       "machineName": "H5P.Audio",
       "majorVersion": 1,
-      "minorVersion": 4
+      "minorVersion": 5
     },
     {
       "machineName": "H5P.Blanks",
       "majorVersion": 1,
-      "minorVersion": 12
+      "minorVersion": 14
     },
     {
       "machineName": "H5P.SingleChoiceSet",
@@ -105,17 +108,17 @@
     {
       "machineName": "H5P.MultiChoice",
       "majorVersion": 1,
-      "minorVersion": 14
+      "minorVersion": 16
     },
     {
       "machineName": "H5P.TrueFalse",
       "majorVersion": 1,
-      "minorVersion": 6
+      "minorVersion": 8
     },
     {
       "machineName": "H5P.DragQuestion",
       "majorVersion": 1,
-      "minorVersion": 13
+      "minorVersion": 14
     },
     {
       "machineName": "H5P.Summary",
@@ -130,22 +133,22 @@
     {
       "machineName": "H5P.InteractiveVideo",
       "majorVersion": 1,
-      "minorVersion": 22
+      "minorVersion": 24
     },
     {
       "machineName": "H5P.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 22
+      "minorVersion": 24
     },
     {
       "machineName": "H5P.MarkTheWords",
       "majorVersion": 1,
-      "minorVersion": 9
+      "minorVersion": 11
     },
     {
       "machineName": "H5P.DragText",
       "majorVersion": 1,
-      "minorVersion": 8
+      "minorVersion": 10
     },
     {
       "machineName": "H5P.TwitterUserFeed",
@@ -155,12 +158,17 @@
     {
       "machineName": "H5P.Dialogcards",
       "majorVersion": 1,
-      "minorVersion": 8
+      "minorVersion": 9
+    },
+    {
+      "machineName": "H5P.AudioRecorder",
+      "majorVersion": 1,
+      "minorVersion": 0
     },
     {
       "machineName": "H5PEditor.ColorSelector",
       "majorVersion": 1,
-      "minorVersion": 2
+      "minorVersion": 3
     },
     {
       "machineName": "H5PEditor.RadioSelector",

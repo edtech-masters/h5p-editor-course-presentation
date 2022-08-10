@@ -183,6 +183,13 @@ H5PEditor.CoursePresentation.prototype.addElement = function (library, options) 
           elementParams.width = 50;
           elementParams.height = 64.5536;
           break;
+
+        case 'H5P.AudioRecorder':
+          elementParams.y = 11;
+          elementParams.width = 41.89;
+          elementParams.height = 78;
+          elementParams.backgroundOpacity = 100;
+          break;
       }
     }
 
@@ -250,7 +257,6 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
     'class': 'h5p-presentation-uploading h5p-hidden',
     appendTo: $wrapper
   });
-
   // Create new presentation.
   var presentationParams = (this.parent instanceof ns.Library ? this.parent.params.params : this.parent.params);
   if (presentationParams && presentationParams.override && presentationParams.override.activeSurface === true) {
@@ -340,12 +346,7 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
     })
     .next()
     .click(function () {
-      var removeIndex = that.cp.$current.index();
-      var removed = that.removeSlide();
-      if (removed !== false) {
-        that.trigger('removeSlide', removeIndex);
-      }
-      that.updateSlidesSidebar();
+      that.removeSlide();
       return false;
     });
     // .next()
@@ -1150,6 +1151,9 @@ H5PEditor.CoursePresentation.prototype.removeSlide = function () {
     $remove.remove();
 
     H5P.ContinuousText.Engine.run(this);
+
+    this.trigger('removeSlide', index);
+    this.updateSlidesSidebar();
   });
 };
 
@@ -1594,10 +1598,11 @@ H5PEditor.CoursePresentation.prototype.setImageSize = function (element, element
  * @param {object} fileParams
  */
 H5PEditor.CoursePresentation.prototype.setVideoSize = function (elementParams, fileParams) {
-  if( fileParams === undefined){
+  if (!fileParams){
     return;
   }
-  if (fileParams.hasOwnProperty('aspectRatio') !== true) {
+
+  if (!fileParams.aspectRatio) {
     fileParams.aspectRatio = '16:9';
   }
 
@@ -2271,13 +2276,12 @@ H5PEditor.CoursePresentation.prototype.showConfirmationDialog = function (dialog
   return confirmationDialog;
 };
 
-
 /**
  * PDF was selected and we need to convert all pages to images, upload them and
  * set as backgrounds for a new slide each
  * @param {event} The file input onchange event
  */
-H5PEditor.CoursePresentation.prototype.processPdf = function (event, that) {
+ H5PEditor.CoursePresentation.prototype.processPdf = function (event, that) {
   const slidesReady = [];
   const PDFJS = window.pdfjsLib;
   that.$uploading.html('<div>Uploading...</div>');
@@ -2364,7 +2368,6 @@ H5PEditor.CoursePresentation.prototype.addPdfSlides = function (slides, that) {
   });
   that.$uploading.addClass('h5p-hidden');
 };
-
 /** @constant {Number} */
 H5PEditor.CoursePresentation.RATIO_SURFACE = 16 / 9;
 
